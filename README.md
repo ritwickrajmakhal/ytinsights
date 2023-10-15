@@ -1,5 +1,7 @@
 # YouTube Insights Front End App (React)
 
+https://github.com/ritwickrajmakhal/youtube-insights-front-end/assets/100060023/a6e6b1a2-eb97-4031-9ad1-05ab964d39ca
+
 This is the front end app for my [YouTube Insights](https://github.com/ritwickrajmakhal/youtube-insights) backend application
 
 ## Table of Contents
