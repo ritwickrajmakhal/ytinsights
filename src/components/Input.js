@@ -93,7 +93,7 @@ export default function Input(props) {
                 className="form-check-label text-light"
                 htmlFor="inlineCheckbox2"
               >
-                Recommendation
+                Video Recommendation
               </label>
             </div>
             <div className="d-flex justify-content-center mb-3">
