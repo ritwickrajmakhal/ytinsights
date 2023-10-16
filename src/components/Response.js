@@ -6,6 +6,21 @@ import loader from "../loader.gif";
 import Card from "./Card";
 
 export default function Response(props) {
+  const sentiments = props?.response?.sentiments
+  const spams = props?.response?.spams
+  let labels = []
+  let data = []
+  let backgroundColor = []
+  if (sentiments) {
+    labels.push("Positive", "Negative", "Neutral")
+    backgroundColor.push("#00a587", "#dc3545", "#ffb706")
+    data.push(sentiments["positive"],sentiments["negative"],sentiments["neutral"])
+  }
+  if (spams){
+    labels.push("Spams")
+    backgroundColor.push("#6c757d")
+    data.push(spams)
+  }
   return (
     <div className="container">
       {!props.error &&
@@ -23,11 +38,11 @@ export default function Response(props) {
               <div className="col-sm-4">
                 <PieChart
                   data={{
-                    labels: Object.keys(props?.response["sentiments"]),
+                    labels: labels,
                     datasets: [
                       {
-                        data: Object.values(props?.response["sentiments"]),
-                        backgroundColor: ["#dc3545", "#ffb706", "#00a587"],
+                        data: data,
+                        backgroundColor: backgroundColor,
                       },
                     ],
                   }}
@@ -52,7 +67,7 @@ export default function Response(props) {
       {props.error &&
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
           <strong>Some Error Occurred!</strong> Please try again
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          <button onClick={props.setError(false)} type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
       }
     </div>

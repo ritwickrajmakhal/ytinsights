@@ -34,6 +34,8 @@ function App() {
   const [inputData, setInputData] = useState({
     link: "",
     commentLimit: "0",
+    sentiment: false,
+    spam: false,
     commentSummary: false,
     recommendation: false,
   });
@@ -56,7 +58,7 @@ function App() {
       setVideoId(videoId);
       // Make a GET request to the backend
       const res = await fetch(
-        `${data.backend.url}/api/youtube?youtube_video_id=${videoId}&limit=${inputData.commentLimit}&comment_summary=${inputData.commentSummary}&recommendation=${inputData.recommendation}`
+        `${data.backend.url}/api/youtube?youtube_video_id=${videoId}&limit=${inputData.commentLimit}&comment_summary=${inputData.commentSummary}&recommendation=${inputData.recommendation}&sentiment=${inputData.sentiment}&spam=${inputData.spam}`
       );
 
       if (!res.ok) {
@@ -66,6 +68,8 @@ function App() {
 
       // Convert response to JSON
       const response = await res.json();
+      // clear response
+      setResponse(null)
       // Set response
       setResponse(response);
       // Set loading to false
@@ -77,7 +81,6 @@ function App() {
     }
   };
 
-
   return (
     <div className="App">
       {/* The Navbar component is rendered here */}
@@ -88,7 +91,7 @@ function App() {
         setInputData={setInputData}
         getResponse={getResponse}
       />
-      <Response videoId={videoId} response={response} loading={loading} error={error} />
+      <Response videoId={videoId} response={response} loading={loading} error={error} setError={setError} />
       <Footer footer={{ name: data.website.nav.websiteName }} />
     </div>
   );
