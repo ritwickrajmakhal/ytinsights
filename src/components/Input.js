@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CheckBox from "./CheckBox";
+import TextInput from "./TextInput";
 
 export default function Input(props) {
   return (
@@ -16,86 +18,43 @@ export default function Input(props) {
               props.getResponse();
             }}
           >
-            <div className="mb-3">
-              <label htmlFor="youtubeLink" className="form-label text-light">
-                YouTube video link:
-              </label>
-              <input
-                type="text"
-                value={props.inputData.link}
-                onChange={(event) =>
-                  props.setInputData({
-                    ...props.inputData,
-                    link: event.target.value,
-                  })
-                }
-                required
-                className="form-control"
-                id="youtubeLink"
-                aria-describedby="emailHelp"
-                placeholder="Paste YouTube video link"
-              />
-            </div>
+            <TextInput label="YouTube video link:" type="text" value={props.inputData.link}
+              changeHandler={(value) => props.setInputData({
+                ...props.inputData,
+                link: value
+              })}
+              placeholder="Paste YouTube video link"
+            />
+            <TextInput label="Comments limit:" type="number" value={props.inputData.commentLimit}
+              changeHandler={(value) => props.setInputData({
+                ...props.inputData,
+                commentLimit: value
+              })}
+              placeholder="Number of comments consideration"
+            />
+            <CheckBox
+              label="Sentiment Analysis"
+              value={props.inputData.sentiment}
+              changeHandler={(value) => props.setInputData({
+                ...props.inputData,
+                sentiment: value
+              })} />
+            <CheckBox label="Spam Detection" value={props.inputData.spam}
+              changeHandler={(value) => props.setInputData({
+                ...props.inputData,
+                spam: value
+              })} />
+            <CheckBox label="Comment Summary" value={props.inputData.commentSummary}
+              changeHandler={(value) => props.setInputData({
+                ...props.inputData,
+                commentSummary: value
+              })} />
+            <CheckBox label="Video Recommendation" value={props.inputData.recommendation}
+              changeHandler={(value) => props.setInputData({
+                ...props.inputData,
+                recommendation: value
+              })} />
 
-            <div className="mb-3">
-              <label htmlFor="commentLimit" className="form-label text-light">
-                Comments limit:
-              </label>
-              <input
-                type="number"
-                min="0"
-                placeholder="Number of comments consideration"
-                className="form-control"
-                id="commentLimit"
-                value={props.inputData.commentLimit}
-                onChange={(event) =>
-                  props.setInputData({
-                    ...props.inputData,
-                    commentLimit: event.target.value,
-                  })
-                }
-              />
-            </div>
-            <div className="form-check form-check-inline mb-3">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox1"
-                onChange={(event) =>
-                  props.setInputData({
-                    ...props.inputData,
-                    commentSummary: event.target.value ? true : false,
-                  })
-                }
-              />
-              <label
-                className="form-check-label text-light"
-                htmlFor="inlineCheckbox1"
-              >
-                Comment summary
-              </label>
-            </div>
-
-            <div className="form-check form-check-inline mb-3">
-              <input
-                className="form-check-input"
-                type="checkbox"
-                id="inlineCheckbox2"
-                value="option2"
-                onChange={(event) =>
-                  props.setInputData({
-                    ...props.inputData,
-                    recommendation: event.target.value ? true : false,
-                  })
-                }
-              />
-              <label
-                className="form-check-label text-light"
-                htmlFor="inlineCheckbox2"
-              >
-                Video Recommendation
-              </label>
-            </div>
             <div className="d-flex justify-content-center mb-3">
               <button type="submit" className="btn btn-outline-light">
                 Generate
