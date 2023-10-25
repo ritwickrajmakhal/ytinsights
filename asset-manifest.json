@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/ytinsights/static/css/main.d06ba2b1.css",
+    "main.js": "/ytinsights/static/js/main.54ce890e.js",
+    "static/js/787.32d824fa.chunk.js": "/ytinsights/static/js/787.32d824fa.chunk.js",
+    "static/media/loader.gif": "/ytinsights/static/media/loader.920c64695c8f5b84e707.gif",
+    "static/media/logo.png": "/ytinsights/static/media/logo.36fe8f00b84b33fd6d50.png",
+    "index.html": "/ytinsights/index.html",
+    "main.d06ba2b1.css.map": "/ytinsights/static/css/main.d06ba2b1.css.map",
+    "main.54ce890e.js.map": "/ytinsights/static/js/main.54ce890e.js.map",
+    "787.32d824fa.chunk.js.map": "/ytinsights/static/js/787.32d824fa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d06ba2b1.css",
+    "static/js/main.54ce890e.js"
+  ]
+}
